@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(HapticCase.allCases, id: \.self) { haptic in
+                Button {
+                    haptic.vibrate()
+                } label: {
+                    Text("\(haptic.rawValue.capitalized)")
+                }
+            }
+            .navigationTitle("Haptics")
+        }
     }
 }
 
